@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<!doctype html>
+<html lang="en">
+  <%- include('./partials/header'); %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('./partials/navigation'); %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="content">
+            <h1><%= title %></h1>
+          <p>Welcome to <%= body %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('./partials/footer'); %>
   </body>
 </html>

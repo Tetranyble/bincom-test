@@ -1,8 +1,23 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: aliceblue;
 }
 
 a {
   color: #00B7FF;
+}
+.content{
+  margin: 6.25rem 0;
+  text-align: center;
+ 
+}
+.bg-light {
+  background-color: aliceblue!important;
+}
+
+.content p{
+  margin-top: 2rem;
 }

@@ -15,10 +15,10 @@
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "bincom_test",
-    "host": "127.0.0.1",
+    "password": "je2RgSFN4m",
+    "database": "ClbEE6o1CE",
+    "host": "remotemysql.com",
     "dialect": "mysql",
-    "use_env_variable":"mysql://ClbEE6o1CE:je2RgSFN4m@remotemysql.com/ClbEE6o1CE?reconnect=true"
+    "use_env_variable":"mysql://ClbEE6o1CE:je2RgSFN4m@remotemysql.com/ClbEE6o1CE"
   }
 }

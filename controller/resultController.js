@@ -13,7 +13,7 @@ const ElectrionResultController = {
          * @param {*} res The response object
          */
         pollingUnitResult: ( req, res ) => {
-            models.announced_pu_results.findAll(
+            db.announced_pu_results.findAll(
                 { 
                     where: { polling_unit_uniqueid: 8 },
                     attributes: { exclude: ['id', 'createdAt', 'updatedAt'] }
@@ -52,11 +52,19 @@ const ElectrionResultController = {
          * @param {*} req The request object 
          * @param {*} res The response object
          */
-        storePollingUnitResult: ( req, res ) =>{},
+        storePollingUnitResult: ( req, res ) =>{
+            // I have intentionally skipped validation of input for brevity
+            db.sequelize.query(`INSERT INTO announced_pu_results (party_score, party_abbreviation, polling_unit_uniqueid) VALUES (${ req.body.party_score}, '${req.body.party_abbreviation}', ${req.body.polling_unit_uniqueid })`, { type: QueryTypes.CREATE })
+            .then( result => res.redirect('/create?message=' + encodeURIComponent('saved successfully')))
+            .catch(error => console.log(error))
+        },
 
-        showPollingForm: (req, res) => {
-            
-            res.render('showPollForm', {})
+        showPollingForm: async (req, res) => {
+            const message = req.query.message;
+            const polling_unit = await db.sequelize.query("SELECT uniqueid, polling_unit_name FROM polling_unit", { type: QueryTypes.SELECT })
+            const party = await db.sequelize.query("SELECT id, partyid FROM party", { type: QueryTypes.SELECT })
+            console.log(message ? message : 'kid')
+            res.render('createPollResult', {title: 'create new polling unit record', party: party, polling_unit: polling_unit, message: message ? message : ''})
         },
         lgaResult: (req, res) => {
             db.sequelize.query(`SELECT l.lga_name, p.polling_unit_id, p.uniqueid, r.party_score, r.party_abbreviation FROM lga l, polling_unit p, announced_pu_results r WHERE l.uniqueid=p.lga_id AND p.uniqueid=r.polling_unit_uniqueid AND l.uniqueid=${req.body.lga_id}`, { type: QueryTypes.SELECT })

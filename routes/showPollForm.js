@@ -5,7 +5,7 @@ var router = express.Router();
 /**
    * GET Polling unit result
    */
-  router.get('/', ElectrionResultController.storePollingUnitResult);
+  router.get('/', ElectrionResultController.showPollingForm);
 
 
 

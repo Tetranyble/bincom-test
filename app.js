@@ -8,7 +8,8 @@ var indexRouter = require('./routes/index');
 var pollingRouter = require('./routes/polling');
 var resultSumRouter = require('./routes/resultSum');
 var lgaResultRouter = require('./routes/lgaResult');
-var createPollResultRouter = require('./routes/resultSum');
+var createPollResultRouter = require('./routes/createPollResult');
+var showPollFormRouter = require('./routes/showPollForm');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/polling', pollingRouter);
 app.use('/result-sum', resultSumRouter);
 app.use('/lga-result', lgaResultRouter);
 app.use('/store', createPollResultRouter);
+app.use('/create', showPollFormRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

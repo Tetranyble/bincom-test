@@ -18,6 +18,7 @@
     "password": null,
     "database": "bincom_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "use_env_variable":"mysql://ClbEE6o1CE:je2RgSFN4m@remotemysql.com/ClbEE6o1CE?reconnect=true"
   }
 }

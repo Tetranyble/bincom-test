@@ -54,7 +54,7 @@ const ElectrionResultController = {
          */
         storePollingUnitResult: ( req, res ) =>{
             // I have intentionally skipped validation of input for brevity
-            db.sequelize.query(`INSERT INTO announced_pu_results (party_score, party_abbreviation, polling_unit_uniqueid) VALUES (${ req.body.party_score}, '${req.body.party_abbreviation}', ${req.body.polling_unit_uniqueid })`, { type: QueryTypes.CREATE })
+            db.sequelize.query(`INSERT INTO announced_pu_results (party_score, party_abbreviation, polling_unit_uniqueid, entered_by_user) VALUES (${ req.body.party_score}, '${req.body.party_abbreviation}', ${req.body.polling_unit_uniqueid}, 'default')`, { type: QueryTypes.CREATE })
             .then( result => res.redirect('/create?message=' + encodeURIComponent('saved successfully')))
             .catch(error => console.log(error))
         },

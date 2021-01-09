@@ -7,7 +7,19 @@
       <div class="row">
         <div class="col-md-12 ">
           <div class="content">
+            <div class="form-content">
+              <form class="d-flex" method="POST" action="/lga-result">
+                <select name="lga_id" id="party_abbreviation" class="form-control me-2" aria-label=".form-select-lg example">
+                  <option selected>Select Local Government</option>
+                  <% lga.forEach( p => {%>
+                    <option value="<%= p.uniqueid %>"><%= p.lga_name %> </option>
+                  <% }); %>
+                </select>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
             <h1><%= title %></h1>
+            
           <p class="result-sum"><%= resultSum %></p>
           </div>
         </div>

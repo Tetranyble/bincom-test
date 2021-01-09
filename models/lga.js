@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      
+      models.lga.hasMany(models.polling_unit,{
+        sourceKey: 'uniqueid',
+        foreignKey: 'lga_id', 
+        constraints: false})
+    
     }
   };
   lga.init({
@@ -25,6 +29,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'lga',
+    timestamps: false,
+    freezeTableName: true,
   });
   return lga;
 };

@@ -3,9 +3,9 @@ var ElectrionResultController = require('../controller/resultController')
 var router = express.Router();
 
 /**
-   * GET Polling unit result
+   * GET Polling units total result
    */
-  router.get('/', ElectrionResultController.pollingUnitResult);
+  router.get('/', ElectrionResultController.allPollingUnitsInLocalGovermentResults);
 
 
 

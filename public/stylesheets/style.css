@@ -21,3 +21,16 @@ a {
 .content p{
   margin-top: 2rem;
 }
+.content h1{
+  margin-bottom: 2rem;
+}
+.content .table-responsive{
+  border: 1px solid #DEDEDE;
+  border-radius: 7px;
+  padding: .5rem;
+}
+
+.content .result-sum{
+  font-size: 3rem;
+  font-weight: 800;
+}

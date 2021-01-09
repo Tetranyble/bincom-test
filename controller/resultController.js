@@ -67,6 +67,7 @@ const ElectrionResultController = {
             res.render('createPollResult', {title: 'create new polling unit record', party: party, polling_unit: polling_unit, message: message ? message : ''})
         },
         lgaResult: (req, res) => {
+            // form validation is been skipped for brevity
             db.sequelize.query(`SELECT l.lga_name, p.polling_unit_id, p.uniqueid, r.party_score, r.party_abbreviation FROM lga l, polling_unit p, announced_pu_results r WHERE l.uniqueid=p.lga_id AND p.uniqueid=r.polling_unit_uniqueid AND l.uniqueid=${req.body.lga_id}`, { type: QueryTypes.SELECT })
             .then( async (result) => {
                 //const resultSum = result.reduce((total, current) => total.party_score + current.party_score )
@@ -75,7 +76,7 @@ const ElectrionResultController = {
                     resultSum += current.party_score
                 });
                 const lga = await db.sequelize.query("SELECT * FROM lga", { type: QueryTypes.SELECT })
-                res.render('resultSum', {title:  `${result[0].lga_name !== undefined ? result[0].lga_name : 'No result'} L.G.A Polling Units Total Result`, resultSum: resultSum, lga : lga})
+                res.render('resultsum', {title:  `${result[0].lga_name !== undefined ? result[0].lga_name : 'No result'} L.G.A Polling Units Total Result`, resultSum: resultSum, lga : lga})
             })
             .catch(error => console.log(error.message, error))
 

@@ -41,7 +41,7 @@ const ElectrionResultController = {
                     resultSum += current.party_score
                 });
                 const lga = await db.sequelize.query("SELECT * FROM lga", { type: QueryTypes.SELECT })
-                res.render('resultSum', {title: `${result[0].lga_name} L.G.A Polling Units Total Result`, resultSum: resultSum, lga : lga})
+                res.render('resultsum', {title: `${result[0].lga_name} L.G.A Polling Units Total Result`, resultSum: resultSum, lga : lga})
             })
             .catch(error => console.log(error.message, error))
         },

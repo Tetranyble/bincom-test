@@ -1,25 +1,28 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('announced_lga_results', {
-     
-      result_id: {
+    await queryInterface.createTable('lgas', {
+      
+      uniqueid: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      lga_name: {
+      lga_id: {
         type: Sequelize.INTEGER
       },
-      party_abbreviation: {
+      lga_name: {
         type: Sequelize.STRING
       },
-      party_score: {
+      state_id: {
         type: Sequelize.INTEGER
       },
+      lga_description: {
+        type: Sequelize.STRING
+      },
       entered_by_user: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       date_entered: {
         type: Sequelize.DATE
@@ -31,6 +34,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('announced_lga_results');
+    await queryInterface.dropTable('lgas');
   }
 };

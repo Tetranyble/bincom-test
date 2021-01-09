@@ -10,7 +10,11 @@ const ElectrionResultController = () => {
          * @param {*} res The response object
          */
         pollingUnitResult: ( req, res ) => {
-            models.announced_lga_results.findOne({ where: { result_id: 1 }, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] } })
+            models.announced_pu_results.findAll(
+                { 
+                    where: { polling_unit_uniqueid: 8 },
+                    attributes: { exclude: ['id', 'createdAt', 'updatedAt'] }
+                })
             .then(result => {
                 res.render('polling', {title: 'Polling Result', result: result})
             }).catch( error => {
@@ -42,7 +46,12 @@ const ElectrionResultController = () => {
          * @param {*} req The request object 
          * @param {*} res The response object
          */
-        storePollingUnitResult: ( req, res ) =>{}
+        storePollingUnitResult: ( req, res ) =>{},
+
+        showPollingForm: (req, res) => {
+            
+            res.render('showPollForm', {})
+        }
     }
 }
 

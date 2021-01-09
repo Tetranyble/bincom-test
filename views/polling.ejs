@@ -12,25 +12,19 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">L.G.A Name</th>
+                        <th scope="col">Polling Unit</th>
                         <th scope="col">Party Abbreviation</th>
                         <th scope="col">Party Score</th>
-                        <th scope="col">Entered By</th>
-                        <th scope="col">Date Entered</th>
-                        <th scope="col">IP Address</th>
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><%= result.result_id %></td>
-                            <td><%= result.lga_name %></td>
-                            <td><%= result.party_abbreviation %></td>
-                            <td><%= result.party_score %></td>
-                            <td><%= result.entered_by_user %></td>
-                            <td><%= result.date_entered %></td>
-                            <td><%= result.user_ip_address %></td>
-                        </tr>
+                        <% result.forEach( p => {%>
+                            <tr>
+                              <td><%= p.polling_unit_uniqueid %></td>
+                              <td><%= p.party_abbreviation %></td>
+                              <td><%= p.party_score %></td>
+                            </tr>
+                         <% }); %>
                     </tbody>
                   </table>
             </div>
